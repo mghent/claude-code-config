@@ -14,7 +14,6 @@ Claude Code is an agentic coding tool designed to help developers turn ideas int
 ├── settings.json       # Configuration settings (model selection)
 ├── agents/            # Custom agent definitions
 ├── commands/          # Custom command templates
-├── scripts/           # Helper scripts for workflows
 ├── projects/          # Session history by project
 ├── todos/             # Task management data
 ├── statsig/           # Analytics and feature flags
@@ -38,10 +37,6 @@ Contains custom agent definitions for specialized workflows:
 ### 📋 commands/
 Custom command templates for common tasks:
 - **create-issue.md**: Template for creating GitHub issues with proper formatting
-
-### 🔧 scripts/
-Helper scripts for automation:
-- **issue-workflow.sh**: Bash script for managing GitHub issue creation workflow (draft, parse, create, cleanup)
 
 ### 📊 projects/
 Contains session history files (JSONL format) organized by project path. Each file represents a conversation session with Claude Code.
@@ -90,13 +85,11 @@ Hierarchical memory structure:
 - Custom commands can be invoked directly from the CLI
 
 ### Issue Creation Workflow
-```bash
-# Use the issue workflow script
-./scripts/issue-workflow.sh create-draft
-# Edit the draft file
-./scripts/issue-workflow.sh parse-and-create DRAFT_ISSUE_*.md
-./scripts/issue-workflow.sh cleanup DRAFT_ISSUE_*.md
-```
+The `gh-issue-creator` agent handles the complete workflow:
+1. Creates draft markdown files for review
+2. Parses YAML frontmatter for metadata  
+3. Creates issues via GitHub CLI
+4. Manages cleanup after successful creation
 
 ## Best Practices
 
