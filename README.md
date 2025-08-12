@@ -36,7 +36,10 @@ Contains custom agent definitions for specialized workflows:
 
 ### 📋 commands/
 Custom command templates for common tasks:
-- **create-issue.md**: Template for creating GitHub issues with proper formatting
+
+| Command | Description | Usage Examples |
+|---------|-------------|----------------|
+| **create-issue** | Creates GitHub issues with review workflow | • "Create an issue in mghent/repo: Add dark mode"<br>• "File a bug report: Login fails on mobile"<br>• "Create an issue about improving documentation" |
 
 ### 📊 projects/
 Contains session history files (JSONL format) organized by project path. Each file represents a conversation session with Claude Code.
@@ -82,14 +85,32 @@ Hierarchical memory structure:
 ### Quick Commands
 - Use `#` shortcut to quickly add memory files
 - Use `/memory` command to edit memory files
-- Custom commands can be invoked directly from the CLI
+- Custom commands can be invoked through natural language
 
-### Issue Creation Workflow
-The `gh-issue-creator` agent handles the complete workflow:
-1. Creates draft markdown files for review
-2. Parses YAML frontmatter for metadata  
-3. Creates issues via GitHub CLI
-4. Manages cleanup after successful creation
+### Available Commands
+
+#### **create-issue** - GitHub Issue Creation
+Creates well-structured GitHub issues with a review workflow.
+
+**Natural Language Invocation:**
+```
+"Create an issue in [repo-name]: [description]"
+"File a bug report: [what's wrong]"
+"Create an issue about [topic]"
+```
+
+**Examples:**
+- "Create an issue in mghent/claude-code-config: Add examples for custom agents"
+- "File a bug: The settings.json file isn't being loaded correctly"
+- "Create an issue about improving the documentation" (will prompt for repo)
+
+**Workflow:**
+1. Creates a draft markdown file for your review
+2. Allows you to edit before submission
+3. Creates the GitHub issue after approval
+4. Cleans up temporary files
+
+The agent ensures quality by never skipping the draft review step.
 
 ## Best Practices
 
