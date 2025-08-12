@@ -3,19 +3,14 @@ description: Create a GitHub issue with proper formatting and structure
 argument-hint: <repository> <issue-description>
 ---
 
-Create a GitHub issue based on the following specification: $ARGUMENTS
+Load and follow the instructions from the agent at @~/.claude/agents/create-issue.md
 
-Use the github-issue-creator agent to:
-1. Parse the requirements
-2. Format a proper GitHub issue
-3. Confirm details with me
-4. Create the issue using gh CLI
+Your task is to create a GitHub issue based on: $ARGUMENTS
 
-Ensure the issue includes:
-- Clear, descriptive title
-- Comprehensive description
-- Acceptance criteria
-- Relevant labels
-- Any technical specifications mentioned
+IMPORTANT: You MUST follow the gh-issue-creator agent's workflow exactly:
+1. Create a draft markdown file first
+2. Allow user to review and edit
+3. Only create the actual issue after user approval
+4. Clean up the temporary file
 
-If repository is not specified, ask which repository to use.
+Remember: The draft review step is CRITICAL - never skip directly to issue creation.
