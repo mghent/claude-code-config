@@ -1,0 +1,49 @@
+# Claude Code Configuration - Git Ignore File
+
+# Session history and project files (contain conversation data)
+projects/
+todos/
+
+# Analytics and telemetry
+statsig/
+
+# IDE integration locks
+ide/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+DRAFT_ISSUE_*.md
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node modules (if any custom extensions are installed)
+node_modules/
+
+# Environment files (may contain API keys)
+.env
+.env.local
+.env.*.local
+
+# Backup files
+*.backup
+*.bak
+
+# Cache directories
+.cache/
+*.cache
